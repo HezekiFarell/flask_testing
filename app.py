@@ -33,7 +33,7 @@ except ImportError:
     recommendation_model = FallbackModel()
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'
+app.run(host='0.0.0.0', debug = True)
 
 # Initialize database
 def init_db():
