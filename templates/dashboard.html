@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="welcome-section">
+        <h2>Selamat Datang, {{ username }}!</h2>
+        <div class="group-badge {{ 'experiment-badge' if kelompok == 'experiment' else 'control-badge' }}">
+            <i class="fas fa-{{ 'robot' if kelompok == 'experiment' else 'clipboard-check' }}"></i>
+            Kelompok {{ 'Eksperimen' if kelompok == 'experiment' else 'Kontrol' }}
+        </div>
+    </div>
+
+    <div class="progress-steps">
+        <div class="step {{ 'completed' if session.get('user_id') else 'active' }}">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h4>Registrasi & Login</h4>
+                <p>Akun Anda sudah aktif</p>
+            </div>
+        </div>
+
+        <div class="step {{ 'completed' if session.get('profile_complete') else 'active' }}">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h4>Lengkapi Profil</h4>
+                <p>Isi data diri dan minat Anda</p>
+                <a href="{{ url_for('profile') }}" class="btn-step">Lengkapi Profil</a>
+            </div>
+        </div>
+
+        <div class="step {{ 'completed' if session.get('pretest_score') else 'active' }}">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h4>Pre-Test</h4>
+                <p>Ukur pengetahuan awal Anda</p>
+                <a href="{{ url_for('pretest') }}" class="btn-step">Mulai Pre-Test</a>
+            </div>
+        </div>
+
+        <div class="step {{ 'completed' if session.get('education_accessed') else 'active' }}">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h4>Materi Edukasi</h4>
+                <p>Pelajari materi rehabilitasi</p>
+                <a href="{{ url_for('education') }}" class="btn-step">Akses Materi</a>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <h4>Post-Test</h4>
+                <p>Ukur peningkatan pengetahuan</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="quick-stats">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="stat-content">
+                <h3>Profil</h3>
+                <p>{{ 'Lengkap' if session.get('profile_complete') else 'Belum Lengkap' }}</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="stat-content">
+                <h3>Pre-Test</h3>
+                <p>{{ session.get('pretest_score', 'Belum') }}{{ '' if session.get('pretest_score') else ' Dikerjakan' }}</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="stat-content">
+                <h3>Materi</h3>
+                <p>{{ 'Diakses' if session.get('education_accessed') else 'Belum Diakses' }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.dashboard-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    color: white;
+}
+
+.group-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.experiment-badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.control-badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.progress-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #e2e8f0;
+}
+
+.step.completed {
+    border-left-color: var(--success);
+}
+
+.step.active {
+    border-left-color: var(--primary);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.step.completed .step-number {
+    background: var(--success);
+    color: white;
+}
+
+.step.active .step-number {
+    background: var(--primary);
+    color: white;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h4 {
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.step-content p {
+    color: var(--gray);
+    margin-bottom: 1rem;
+}
+
+.btn-step {
+    background: var(--primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-step:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+.quick-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.stat-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.stat-content p {
+    color: var(--gray);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .step {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .quick-stats {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

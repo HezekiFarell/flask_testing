@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <h2>Lengkapi Profil Anda</h2>
+    <p>Data ini akan digunakan untuk personalisasi materi edukasi</p>
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="usia">Usia</label>
+            <input type="number" id="usia" name="usia" min="18" max="100" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="jenis_kelamin">Jenis Kelamin</label>
+            <select id="jenis_kelamin" name="jenis_kelamin" required>
+                <option value="">Pilih Jenis Kelamin</option>
+                <option value="L">Laki-laki</option>
+                <option value="P">Perempuan</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="lokasi">Lokasi</label>
+            <select id="lokasi" name="lokasi" required>
+                <option value="">Pilih Lokasi</option>
+                <option value="Jakarta">Jakarta</option>
+                <option value="Bandung">Bandung</option>
+                <option value="Surabaya">Surabaya</option>
+                <option value="Medan">Medan</option>
+                <option value="Makassar">Makassar</option>
+                <option value="Lainnya">Lainnya</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="pendidikan">Pendidikan Terakhir</label>
+            <select id="pendidikan" name="pendidikan">
+                <option value="">Pilih Pendidikan</option>
+                <option value="SMA">SMA/Sederajat</option>
+                <option value="D3">Diploma (D3)</option>
+                <option value="S1">Sarjana (S1)</option>
+                <option value="S2">Magister (S2)</option>
+                <option value="S3">Doktor (S3)</option>
+            </select>
+        </div>
+        
+        <div class="interest-section">
+            <h3>Minat dan Ketertarikan (Skala 1-5)</h3>
+            <p>1 = Tidak Tertarik, 5 = Sangat Tertarik</p>
+            
+            <div class="form-group">
+                <label for="minat_1">Rehabilitasi Fisik dan Terapi</label>
+                <input type="range" id="minat_1" name="minat_1" min="1" max="5" value="3" 
+                       oninput="updateValue('minat_1_value', this.value)">
+                <span id="minat_1_value">3</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="minat_2">Kesehatan Mental dan Psikologi</label>
+                <input type="range" id="minat_2" name="minat_2" min="1" max="5" value="3"
+                       oninput="updateValue('minat_2_value', this.value)">
+                <span id="minat_2_value">3</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="minat_3">Teknologi dan Inovasi Medis</label>
+                <input type="range" id="minat_3" name="minat_3" min="1" max="5" value="3"
+                       oninput="updateValue('minat_3_value', this.value)">
+                <span id="minat_3_value">3</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="minat_4">Gaya Hidup Sehat dan Nutrisi</label>
+                <input type="range" id="minat_4" name="minat_4" min="1" max="5" value="3"
+                       oninput="updateValue('minat_4_value', this.value)">
+                <span id="minat_4_value">3</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="minat_5">Komunitas dan Support Group</label>
+                <input type="range" id="minat_5" name="minat_5" min="1" max="5" value="3"
+                       oninput="updateValue('minat_5_value', this.value)">
+                <span id="minat_5_value">3</span>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn">Simpan Profil</button>
+    </form>
+</div>
+
+<script>
+function updateValue(elementId, value) {
+    document.getElementById(elementId).textContent = value;
+}
+</script>
+
+<style>
+.interest-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.interest-section h3 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.interest-section p {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.form-group input[type="range"] {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.form-group span {
+    display: inline-block;
+    margin-left: 1rem;
+    font-weight: bold;
+    color: var(--primary);
+    min-width: 20px;
+}
+</style>
+{% endblock %}

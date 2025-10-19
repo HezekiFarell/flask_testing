@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="test-container">
+    <h2>Pre-Test</h2>
+    <p>Silakan jawab pertanyaan berikut (skala 1-5):</p>
+    
+    <form method="POST">
+        {% for i in range(1, 6) %}
+        <div class="question">
+            <label>Pertanyaan {{ i }}: Seberapa baik pengetahuan Anda tentang topik ini?</label>
+            <select name="q{{ i }}" required>
+                <option value="">Pilih skor</option>
+                <option value="1">1 - Sangat Kurang</option>
+                <option value="2">2 - Kurang</option>
+                <option value="3">3 - Cukup</option>
+                <option value="4">4 - Baik</option>
+                <option value="5">5 - Sangat Baik</option>
+            </select>
+        </div>
+        {% endfor %}
+        
+        <button type="submit" class="btn">Submit Pre-Test</button>
+    </form>
+</div>
+{% endblock %}

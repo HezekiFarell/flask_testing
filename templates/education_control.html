@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="education-container control">
+    <!-- Header Standar -->
+    <div class="standard-header">
+        <div class="header-content">
+            <h2>Materi Edukasi Standar</h2>
+            <p>Konten edukasi umum untuk semua peserta</p>
+        </div>
+        <div class="group-badge control-badge">
+            <i class="fas fa-clipboard-check"></i> KELOMPOK KONTROL
+        </div>
+    </div>
+
+    <!-- Info Box -->
+    <div class="info-section">
+        <div class="info-card">
+            <i class="fas fa-info-circle"></i>
+            <div class="info-content">
+                <h3>Materi Standar</h3>
+                <p>Anda menerima materi edukasi standar yang sama untuk semua peserta dalam penelitian ini</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid Layout Sederhana -->
+    <div class="standard-grid">
+        <div class="grid-item main-content">
+            <div class="item-header">
+                <h3>{{ content.title }}</h3>
+                <div class="item-meta">
+                    <span class="material-type">MATERI UTAMA</span>
+                </div>
+            </div>
+            <div class="item-content">
+                {% for item in content.content %}
+                <div class="standard-item">
+                    <div class="item-number">{{ loop.index }}</div>
+                    <p>{{ item }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="grid-item video-content">
+            <div class="item-header">
+                <h3>Video Edukasi</h3>
+                <div class="item-meta">
+                    <span class="material-type">VIDEO</span>
+                </div>
+            </div>
+            <div class="video-player-standard">
+                <div class="video-placeholder">
+                    <i class="fas fa-play"></i>
+                    <p>Video Edukasi Standar</p>
+                </div>
+            </div>
+            <div class="video-info">
+                <h4>Video Pembelajaran</h4>
+                <p>Durasi: 15 menit | Format: MP4</p>
+                <button class="btn-standard">
+                    <i class="fas fa-play"></i> Putar Video
+                </button>
+                <button class="btn-standard">
+                    <i class="fas fa-download"></i> Unduh
+                </button>
+            </div>
+        </div>
+        
+        <div class="grid-item download-content">
+            <div class="item-header">
+                <h3>Materi Unduhan</h3>
+                <div class="item-meta">
+                    <span class="material-type">DOWNLOAD</span>
+                </div>
+            </div>
+            <div class="download-list">
+                <div class="download-item-standard">
+                    <div class="download-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="download-details">
+                        <h4>Materi Edukasi PDF</h4>
+                        <p>File PDF berisi materi lengkap</p>
+                        <span class="file-size">3.5 MB</span>
+                    </div>
+                    <button class="btn-download-standard">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+                
+                <div class="download-item-standard">
+                    <div class="download-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="download-details">
+                        <h4>Ringkasan Materi</h4>
+                        <p>Dokumen ringkasan poin penting</p>
+                        <span class="file-size">1.2 MB</span>
+                    </div>
+                    <button class="btn-download-standard">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Resources -->
+    <div class="resources-section">
+        <h3>Sumber Daya Tambahan</h3>
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="resource-content">
+                    <h4>Bacaan Lebih Lanjut</h4>
+                    <p>Referensi dan bacaan tambahan tentang rehabilitasi</p>
+                    <button class="btn-resource">Akses</button>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="resource-content">
+                    <h4>FAQ</h4>
+                    <p>Pertanyaan yang sering diajukan</p>
+                    <button class="btn-resource">Lihat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigasi -->
+    <div class="navigation">
+        <a href="{{ url_for('posttest') }}" class="btn btn-next">
+            <i class="fas fa-arrow-right"></i> Lanjut ke Post-Test
+        </a>
+    </div>
+</div>
+{% endblock %}

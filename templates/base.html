@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Edukasi Eksperimen</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="app-page">
+    <!-- Animated Background untuk Halaman App -->
+    <div class="app-animated-bg">
+        <div class="app-floating-shapes">
+            <div class="app-shape app-shape-1"></div>
+            <div class="app-shape app-shape-2"></div>
+            <div class="app-shape app-shape-3"></div>
+        </div>
+    </div>
+
+    <!-- Navigation Header dari Home (Dimodifikasi) -->
+    <nav class="app-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-tablets"></i>
+                <span>RehabBersinar</span>
+            </div>
+            <div class="nav-links">
+                {% if session.user_id %}
+                    <span class="user-welcome">Selamat datang, <strong>{{ session.username }}</strong></span>
+                    <span class="user-group">(Kelompok: {{ session.kelompok }})</span>
+                    <a href="{{ url_for('logout') }}" class="btn-logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                {% else %}
+                    <a href="{{ url_for('home') }}" class="btn-home">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                    <a href="{{ url_for('login') }}" class="btn-login">Login</a>
+                    <a href="{{ url_for('register') }}" class="btn-register">Daftar</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="app-container">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            <div class="alert-content">
+                                <i class="alert-icon 
+                                    {% if category == 'success' %}fas fa-check-circle
+                                    {% elif category == 'error' %}fas fa-exclamation-circle
+                                    {% else %}fas fa-info-circle{% endif %}">
+                                </i>
+                                <span>{{ message }}</span>
+                            </div>
+                            <button class="alert-close" onclick="this.parentElement.style.display='none'">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Main Content Block -->
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fa-solid fa-tablets"></i>
+                        <span>RehabBersinar</span>
+                    </div>
+                    <p>Platform edukasi cerdas dengan teknologi AI untuk pengalaman belajar yang personal dan efektif.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigasi</h4>
+                    <a href="{{ url_for('home') }}">Home</a>
+                    <a href="{{ url_for('login') }}">Login</a>
+                    <a href="{{ url_for('register') }}">Daftar</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="mailto:help@edulearn.com">Bantuan</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Kontak</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RehabBersinar. All rights reserved. | Sistem Rekomendasi</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animasi untuk halaman app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animasi floating shapes
+            const shapes = document.querySelectorAll('.app-shape');
+            shapes.forEach((shape, index) => {
+                shape.style.animationDelay = `${index * 2}s`;
+            });
+
+            // Auto-hide flash messages setelah 5 detik
+            const flashMessages = document.querySelectorAll('.alert');
+            flashMessages.forEach(message => {
+                setTimeout(() => {
+                    message.style.opacity = '0';
+                    message.style.transform = 'translateX(100%)';
+                    setTimeout(() => {
+                        if (message.parentElement) {
+                            message.parentElement.remove();
+                        }
+                    }, 300);
+                }, 5000);
+            });
+
+            // Smooth scroll untuk anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Loading animation
+        function showLoading() {
+            const loader = document.createElement('div');
+            loader.className = 'page-loader';
+            loader.innerHTML = `
+                <div class="loader-content">
+                    <div class="loader-spinner">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <p>Memuat...</p>
+                </div>
+            `;
+            document.body.appendChild(loader);
+            
+            setTimeout(() => {
+                if (loader.parentElement) {
+                    loader.remove();
+                }
+            }, 1000);
+        }
+
+        // Attach loading to navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a:not([href^="#"]):not([target="_blank"])');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') && !this.getAttribute('href').startsWith('javascript')) {
+                        showLoading();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

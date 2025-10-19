@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduLearn - Platform Edukasi Cerdas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="home-page">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="home-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-tablets"></i>
+                <span>RehabBersinar</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Fitur</a>
+                <a href="#about">Tentang</a>
+                <a href="{{ url_for('login') }}" class="btn-login">Login</a>
+                <a href="{{ url_for('register') }}" class="btn-register">Daftar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-word title-word-3">Rehabilitasi</span>
+                        <span class="title-word title-word-3">Untuk</span>
+                        <span class="title-word title-word-3">Hidup Sehat</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Platform edukasi tentang layanan rehabilitasi narkoba dengan teknologi <span class="highlight">Machine Learning</span> 
+                        yang menyesuaikan materi pembelajaran dengan kebutuhan individu Anda
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="{{ url_for('register') }}" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            Mulai Sekarang
+                        </a>
+                        <a href="#features" class="btn btn-secondary">
+                            <i class="fas fa-play-circle"></i>
+                            Lihat Demo
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number" data-count="1000">0</div>
+                            <div class="stat-label">Pengguna</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-count="95">0</div>
+                            <div class="stat-label">Kepuasan</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-count="87">0</div>
+                            <div class="stat-label">Peningkatan</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-cards">
+                        <div class="card card-1">
+                            <i class="fas fa-brain"></i>
+                            <h4>AI Personalisasi</h4>
+                        </div>
+                        <div class="card card-2">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Analisis Progress</h4>
+                        </div>
+                        <div class="card card-3">
+                            <i class="fa-solid fa-book"></i>
+                            <h4>Menambah Pengetahuan</h4>
+                        </div>
+                    </div>
+                    <div class="main-visual">
+                        <div class="visual-circle">
+                            <div class="rotating-element">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <div class="pulse-dots">
+                                <div class="dot dot-1"></div>
+                                <div class="dot dot-2"></div>
+                                <div class="dot dot-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Fitur Unggulan</h2>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Recommendation</h3>
+                    <p>Sistem rekomendasi cerdas menggunakan algoritma Random Forest untuk materi pembelajaran yang dipersonalisasi</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Analisis Data Real-time</h3>
+                    <p>Pantau perkembangan belajar dengan analisis data yang komprehensif dan real-time</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Studi Eksperimen</h3>
+                    <p>Bergabung dalam penelitian edukasi dengan sistem kelompok eksperimen dan kontrol</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Cara Kerja Sistem</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3>Registrasi & Pre-Test</h3>
+                        <p>Daftar akun dan ikuti pre-test untuk mengukur pengetahuan awal Anda</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3>Analisis AI</h3>
+                        <p>Sistem menganalisis profil dan hasil test untuk menentukan kelompok belajar</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3>Materi Personalisasi</h3>
+                        <p>Dapatkan materi yang disesuaikan dengan kebutuhan belajar Anda</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h3>Post-Test & Evaluasi</h3>
+                        <p>Ikuti post-test dan lihat perkembangan pengetahuan Anda</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Mendapatkan informasi terkait program Layanan rehabilitas narkoba</h2>
+                <p>Ayok bergabung untuk merasakan manfaat pembelajaran personalisasi</p>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('register') }}" class="btn btn-large">
+                        <i class="fas fa-user-plus"></i>
+                        Daftar Sekarang
+                    </a>
+                    <a href="{{ url_for('login') }}" class="btn btn-large btn-outline">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fa-solid fa-tablets"></i>
+                        <span>RehabBersinar</span>
+                    </div>
+                    <p>Platform edukasi cerdas dengan teknologi AI untuk pengalaman belajar yang personal dan efektif.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#features">Fitur</a>
+                    <a href="#about">Tentang</a>
+                    <a href="{{ url_for('login') }}">Login</a>
+                    <a href="{{ url_for('register') }}">Daftar</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> info@RehabBersinar.com</p>
+                    <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RehabBersinar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- About Modal -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tentang Penelitian</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="research-info">
+                    <!-- Logo dan Informasi Kolaborasi -->
+                    <div class="collaboration-section">
+                        <div class="logos">
+                            <div class="logo-item">
+                                <div class="logo-circle">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <h3>Universitas EduTech</h3>
+                                <p>Fakultas Ilmu Komputer</p>
+                            </div>
+                            <div class="logo-item">
+                                <div class="logo-circle">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <h3>Lab AI Research</h3>
+                                <p>Pusat Penelitian AI</p>
+                            </div>
+                            <div class="logo-item">
+                                <div class="logo-circle">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3>Kementerian Pendidikan</h3>
+                                <p>Direktorat Pendidikan Tinggi</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Informasi Penelitian -->
+                    <div class="research-details">
+                        <div class="research-card">
+                            <h3><i class="fas fa-bullseye"></i> Tujuan Penelitian</h3>
+                            <p>Penelitian ini bertujuan untuk menganalisis efektivitas sistem rekomendasi berbasis machine learning dalam meningkatkan pemahaman dan pengetahuan masyarakat dengan personalisasi konten edukasi.</p>
+                        </div>
+
+                        <div class="research-card">
+                            <h3><i class="fas fa-microscope"></i> Metodologi</h3>
+                            <div class="methodology">
+                                <div class="method-step">
+                                    <span class="step-number">1</span>
+                                    <div class="step-content">
+                                        <h4>Studi Eksperimen</h4>
+                                        <p>Peserta dibagi secara acak menjadi kelompok eksperimen dan kontrol</p>
+                                    </div>
+                                </div>
+                                <div class="method-step">
+                                    <span class="step-number">2</span>
+                                    <div class="step-content">
+                                        <h4>Algoritma Random Forest</h4>
+                                        <p>Kelompok eksperimen menerima rekomendasi konten dari model machine learning</p>
+                                    </div>
+                                </div>
+                                <div class="method-step">
+                                    <span class="step-number">3</span>
+                                    <div class="step-content">
+                                        <h4>Analisis Komparatif</h4>
+                                        <p>Membandingkan peningkatan skor antara kedua kelompok</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="research-card">
+                            <h3><i class="fas fa-handshake"></i> Kolaborasi</h3>
+                            <div class="collaboration-details">
+                                <div class="collab-item">
+                                    <i class="fas fa-user-tie"></i>
+                                    <div>
+                                        <h4>Peneliti Utama</h4>
+                                        <p>Dr. Ahmad Wijaya, S.Kom., M.T.</p>
+                                        <span class="affiliation">Universitas EduTech</span>
+                                    </div>
+                                </div>
+                                <div class="collab-item">
+                                    <i class="fas fa-users"></i>
+                                    <div>
+                                        <h4>Tim Peneliti</h4>
+                                        <p>Prof. Dr. Maria S.Kom., M.Sc.</p>
+                                        <span class="affiliation">Lab AI Research</span>
+                                    </div>
+                                </div>
+                                <div class="collab-item">
+                                    <i class="fas fa-building"></i>
+                                    <div>
+                                        <h4>Pendanaan</h4>
+                                        <p>Hibah Penelitian Strategis Nasional 2024</p>
+                                        <span class="affiliation">Kementerian Pendidikan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="research-card">
+                            <h3><i class="fas fa-chart-line"></i> Hasil yang Diharapkan</h3>
+                            <ul class="expected-results">
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Peningkatan signifikan dalam hasil belajar kelompok eksperimen</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Model rekomendasi yang efektif untuk personalisasi edukasi</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Publikasi ilmiah di jurnal internasional bereputasi</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Implementasi sistem di institusi pendidikan mitra</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Penelitian -->
+                    <div class="timeline-section">
+                        <h3><i class="fas fa-calendar-alt"></i> Timeline Penelitian</h3>
+                        <div class="research-timeline">
+                            <div class="timeline-phase">
+                                <div class="phase-date">Jan - Mar 2024</div>
+                                <div class="phase-content">
+                                    <h4>Fase Persiapan</h4>
+                                    <p>Pengembangan sistem dan perekrutan peserta</p>
+                                </div>
+                            </div>
+                            <div class="timeline-phase">
+                                <div class="phase-date">Apr - Jun 2024</div>
+                                <div class="phase-content">
+                                    <h4>Fase Eksperimen</h4>
+                                    <p>Pelaksanaan studi dan pengumpulan data</p>
+                                </div>
+                            </div>
+                            <div class="timeline-phase">
+                                <div class="phase-date">Jul - Sep 2024</div>
+                                <div class="phase-content">
+                                    <h4>Fase Analisis</h4>
+                                    <p>Analisis data dan evaluasi hasil</p>
+                                </div>
+                            </div>
+                            <div class="timeline-phase">
+                                <div class="phase-date">Oct - Dec 2024</div>
+                                <div class="phase-content">
+                                    <h4>Fase Publikasi</h4>
+                                    <p>Penulisan laporan dan publikasi hasil</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kontak Penelitian -->
+                    <div class="contact-section">
+                        <h3><i class="fas fa-envelope"></i> Informasi Kontak</h3>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>research@edulearn.ac.id</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Telepon</h4>
+                                    <p>+62 21 1234 5678</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Alamat</h4>
+                                    <p>Gedung Research Center, Kampus Universitas EduTech</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeAboutModal()">
+                    <i class="fas fa-thumbs-up"></i>
+                    Mengerti, Terima Kasih
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal About functionality
+        const aboutModal = document.getElementById('aboutModal');
+        const aboutLink = document.querySelector('a[href="#about"]');
+
+        function openAboutModal() {
+            aboutModal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+        }
+
+        function closeAboutModal() {
+            aboutModal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scroll
+        }
+
+        // Event listeners
+        aboutLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            openAboutModal();
+        });
+
+        // Close modal when clicking on X
+        document.querySelector('.close-modal').addEventListener('click', closeAboutModal);
+
+        // Close modal when clicking outside
+        aboutModal.addEventListener('click', function(e) {
+            if (e.target === aboutModal) {
+                closeAboutModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && aboutModal.style.display === 'block') {
+                closeAboutModal();
+            }
+        });
+
+        // Update navigation link for About
+        document.querySelector('a[href="#about"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            openAboutModal();
+        });
+
+        // Typing animation for hero title (existing code)
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Animasi counter statistics (existing code)
+        function animateCounter() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        counter.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        // Intersection Observer untuk animasi scroll (existing code)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    if (entry.target.classList.contains('hero-stats')) {
+                        animateCounter();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements (existing code)
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementsToAnimate = document.querySelectorAll('.feature-card, .timeline-item, .hero-stats');
+            elementsToAnimate.forEach(el => observer.observe(el));
+            
+            // Start typing animation
+            const titleElement = document.querySelector('.hero-title');
+            const originalText = titleElement.textContent;
+            typeWriter(titleElement, originalText, 150);
+        });
+    </script>
+</body>
+</html>

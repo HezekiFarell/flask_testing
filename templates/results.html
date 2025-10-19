@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="results-container">
+    <h2>Hasil Test</h2>
+    
+    {% if admin %}
+    <h3>Analisis Data (Admin)</h3>
+    <div class="stats">
+        <div class="stat-item">
+            <h4>Kelompok Eksperimen</h4>
+            <p>Jumlah: {{ stats.experiment_count }}</p>
+            <p>Rata-rata Peningkatan: {{ "%.2f"|format(stats.experiment_avg_improvement) }}</p>
+        </div>
+        <div class="stat-item">
+            <h4>Kelompok Kontrol</h4>
+            <p>Jumlah: {{ stats.control_count }}</p>
+            <p>Rata-rata Peningkatan: {{ "%.2f"|format(stats.control_avg_improvement) }}</p>
+        </div>
+    </div>
+    
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Kelompok</th>
+                <th>Pre-Test</th>
+                <th>Post-Test</th>
+                <th>Peningkatan</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <tr>
+                <td>User {{ loop.index }}</td>
+                <td>{{ result.kelompok }}</td>
+                <td>{{ result.pretest }}</td>
+                <td>{{ result.posttest }}</td>
+                <td>{{ result.improvement }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="personal-results">
+        <div class="score-card">
+            <h3>Skor Pre-Test: {{ pretest_score }}</h3>
+        </div>
+        <div class="score-card">
+            <h3>Skor Post-Test: {{ posttest_score }}</h3>
+        </div>
+        <div class="improvement-card">
+            <h3>Peningkatan: {{ improvement }} poin</h3>
+        </div>
+        <div class="group-info">
+            <p>Kelompok: <strong>{{ kelompok|upper }}</strong></p>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

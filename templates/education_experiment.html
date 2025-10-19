@@ -1,0 +1,454 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="education-container experiment">
+    <!-- Header Personalisasi -->
+    <div class="personalized-header">
+        <div class="user-profile">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-info">
+                <h2>Materi Personalisasi untuk Anda</h2>
+                <p>Direkomendasikan berdasarkan profil dan hasil pre-test Anda</p>
+            </div>
+        </div>
+        <div class="group-badge experiment-badge">
+            <i class="fas fa-robot"></i> KELOMPOK EKSPERIMEN
+        </div>
+    </div>
+
+    <!-- Progress Analytics -->
+    <div class="analytics-section">
+        <div class="analytics-card">
+            <div class="analytics-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <div class="analytics-content">
+                <h3>Tingkat Pemahaman: {{ content.level }}</h3>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                    <span>75% cocok dengan gaya belajar Anda</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Spotify-style Content Grid -->
+    <div class="content-grid-section">
+        <h3>Rekomendasi Konten untuk Anda</h3>
+        <div class="spotify-grid">
+            <!-- Kartu 1: Video Utama -->
+            <div class="content-card featured">
+                <div class="card-image">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <img src="{{ url_for('static', filename='images/video-thumbnail.jpg') }}" alt="Video Rehabilitasi">
+                    <div class="card-badge">VIDEO UTAMA</div>
+                </div>
+                <div class="card-content">
+                    <h4>Teknik Rehabilitasi Personalisasi</h4>
+                    <p>Video khusus berdasarkan analisis kebutuhan Anda</p>
+                    <div class="card-meta">
+                        <span><i class="fas fa-clock"></i> 15:30</span>
+                        <span><i class="fas fa-chart-line"></i> 92% Relevan</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-action"><i class="fas fa-play"></i> Putar</button>
+                        <button class="btn-action"><i class="fas fa-download"></i> Unduh</button>
+                        <button class="btn-action"><i class="fas fa-info-circle"></i> Detail</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kartu 2: Animasi Interaktif -->
+            <div class="content-card interactive">
+                <div class="card-image">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <img src="{{ url_for('static', filename='images/animation-thumbnail.jpg') }}" alt="Animasi Interaktif">
+                    <div class="card-badge">ANIMASI INTERAKTIF</div>
+                </div>
+                <div class="card-content">
+                    <h4>Simulasi Proses Rehabilitasi</h4>
+                    <p>Animasi 3D interaktif dengan panduan personal</p>
+                    <div class="card-meta">
+                        <span><i class="fas fa-magic"></i> Interaktif</span>
+                        <span><i class="fas fa-user-check"></i> Dipersonalisasi</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-action"><i class="fas fa-play"></i> Jalankan</button>
+                        <button class="btn-action"><i class="fas fa-download"></i> Unduh</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kartu 3: Materi Download -->
+            <div class="content-card downloadable">
+                <div class="card-image">
+                    <div class="play-button">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <img src="{{ url_for('static', filename='images/ebook-thumbnail.jpg') }}" alt="E-Book">
+                    <div class="card-badge">MATERI LENGKAP</div>
+                </div>
+                <div class="card-content">
+                    <h4>Panduan Rehabilitasi Personal</h4>
+                    <p>PDF dengan teknik khusus sesuai kondisi Anda</p>
+                    <div class="card-meta">
+                        <span><i class="fas fa-file-pdf"></i> PDF</span>
+                        <span><i class="fas fa-file-alt"></i> 25 Halaman</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-action"><i class="fas fa-eye"></i> Baca</button>
+                        <button class="btn-action"><i class="fas fa-download"></i> Unduh</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kartu 4: Checklist & Progress -->
+            <div class="content-card progress">
+                <div class="card-image">
+                    <div class="play-button">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <img src="{{ url_for('static', filename='images/progress-thumbnail.jpg') }}" alt="Progress Tracker">
+                    <div class="card-badge">TRACKER</div>
+                </div>
+                <div class="card-content">
+                    <h4>Progress Rehabilitasi Anda</h4>
+                    <p>Monitor perkembangan dan dapatkan tips personal</p>
+                    <div class="progress-tracker">
+                        <div class="progress-item">
+                            <span>Pemahaman Konsep</span>
+                            <div class="progress-bar small">
+                                <div class="progress-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <span>Praktik Latihan</span>
+                            <div class="progress-bar small">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-action"><i class="fas fa-chart-bar"></i> Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Materi Detail dengan Tabs -->
+    <div class="detailed-content">
+        <div class="content-tabs">
+            <div class="tab active" data-tab="materi">
+                <i class="fas fa-book"></i> Materi Utama
+            </div>
+            <div class="tab" data-tab="video">
+                <i class="fas fa-video"></i> Video & Animasi
+            </div>
+            <div class="tab" data-tab="download">
+                <i class="fas fa-download"></i> Materi Unduhan
+            </div>
+            <div class="tab" data-tab="progress">
+                <i class="fas fa-chart-line"></i> Progress Anda
+            </div>
+        </div>
+
+        <div class="tab-content active" id="materi-tab">
+            <div class="content-header">
+                <h3>{{ content.title }}</h3>
+                <div class="content-meta">
+                    <span class="level-tag">{{ content.level }}</span>
+                    <span class="time-estimate"><i class="fas fa-clock"></i> Perkiraan: 25 menit</span>
+                </div>
+            </div>
+            
+            <div class="content-items">
+                {% for item in content.content %}
+                <div class="content-item personalized">
+                    <div class="item-number">{{ loop.index }}</div>
+                    <div class="item-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="item-content">
+                        <h4>Poin Penting untuk Anda</h4>
+                        <p>{{ item }}</p>
+                        <div class="personal-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <strong>Tips Personal:</strong> Berdasarkan gaya belajar Anda, coba baca poin ini dengan suara keras
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="tab-content" id="video-tab">
+            <div class="video-content">
+                <h3>Konten Multimedia Personalisasi</h3>
+                <div class="video-grid">
+                    <div class="video-item">
+                        <div class="video-player">
+                            <div class="video-placeholder">
+                                <i class="fas fa-play-circle"></i>
+                                <p>Video Rehabilitasi Personalisasi</p>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Video Utama untuk Anda</h4>
+                            <p>Durasi: 15:30 | Tingkat: {{ content.level }}</p>
+                            <div class="relevance-score">
+                                <i class="fas fa-bullseye"></i>
+                                <span>92% relevan dengan kebutuhan Anda</span>
+                            </div>
+                            <div class="video-actions">
+                                <button class="btn-primary"><i class="fas fa-play"></i> Putar Video</button>
+                                <button class="btn-secondary"><i class="fas fa-download"></i> Unduh</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="animation-item">
+                        <div class="animation-player">
+                            <div class="animation-placeholder">
+                                <i class="fas fa-cube"></i>
+                                <p>Animasi 3D Interaktif</p>
+                                <button class="btn-interactive">Jalankan Animasi</button>
+                            </div>
+                        </div>
+                        <div class="animation-info">
+                            <h4>Simulasi Interaktif</h4>
+                            <p>Jelajahi proses rehabilitasi dengan panduan visual</p>
+                            <div class="interactive-features">
+                                <span><i class="fas fa-rotate"></i> Dapat Diputar 360°</span>
+                                <span><i class="fas fa-expand"></i> Zoom Detail</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="download-tab">
+            <div class="download-content">
+                <h3>Materi Unduhan Personalisasi</h3>
+                <div class="download-grid">
+                    <div class="download-item featured">
+                        <div class="download-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>Panduan Lengkap Rehabilitasi</h4>
+                            <p>PDF personalisasi dengan teknik khusus untuk Anda</p>
+                            <div class="file-info">
+                                <span><i class="fas fa-file"></i> 5.2 MB</span>
+                                <span><i class="fas fa-star"></i> Direkomendasikan</span>
+                            </div>
+                        </div>
+                        <button class="btn-download-main">
+                            <i class="fas fa-download"></i> Unduh
+                        </button>
+                    </div>
+                    
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>Video Offline</h4>
+                            <p>Download video untuk ditonton tanpa internet</p>
+                            <div class="file-info">
+                                <span><i class="fas fa-file-video"></i> 45.1 MB</span>
+                            </div>
+                        </div>
+                        <button class="btn-download">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>Infografis</h4>
+                            <p>Gambar informatif tentang teknik rehabilitasi</p>
+                            <div class="file-info">
+                                <span><i class="fas fa-file-image"></i> 2.3 MB</span>
+                            </div>
+                        </div>
+                        <button class="btn-download">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>Checklist Progress</h4>
+                            <p>Template untuk mencatat perkembangan Anda</p>
+                            <div class="file-info">
+                                <span><i class="fas fa-file-excel"></i> 1.1 MB</span>
+                            </div>
+                        </div>
+                        <button class="btn-download">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="progress-tab">
+            <div class="progress-content">
+                <h3>Progress dan Analytics Anda</h3>
+                <div class="progress-cards">
+                    <div class="progress-stat">
+                        <div class="stat-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h4>Tingkat Pemahaman</h4>
+                            <div class="stat-value">85%</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-stat">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h4>Waktu Belajar</h4>
+                            <div class="stat-value">45 menit</div>
+                            <p>Total waktu yang dihabiskan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-stat">
+                        <div class="stat-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h4>Materi Diselesaikan</h4>
+                            <div class="stat-value">3/5</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendation-box">
+                    <h4>Rekomendasi Berdasarkan Progress Anda</h4>
+                    <div class="recommendation-content">
+                        <i class="fas fa-robot"></i>
+                        <div>
+                            <p>Berdasarkan progress Anda, kami merekomendasikan untuk fokus pada:</p>
+                            <ul>
+                                <li>Teknik pernapasan dalam sesi berikutnya</li>
+                                <li>Latihan penguatan otot ringan</li>
+                                <li>Praktik konsistensi harian</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigasi -->
+    <div class="navigation">
+        <a href="{{ url_for('posttest') }}" class="btn btn-next">
+            <i class="fas fa-arrow-right"></i> Lanjut ke Post-Test
+        </a>
+    </div>
+</div>
+
+<!-- Modal untuk Video -->
+<div class="modal" id="videoModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Video Rehabilitasi Personalisasi</h3>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="video-container">
+                <!-- Video player akan ditempatkan di sini -->
+                <div class="video-placeholder-large">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Video akan diputar di sini</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// JavaScript untuk interaktivitas
+document.addEventListener('DOMContentLoaded', function() {
+    // Tab functionality
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tabId = tab.getAttribute('data-tab');
+            
+            // Remove active class from all tabs and contents
+            tabs.forEach(t => t.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            tab.classList.add('active');
+            document.getElementById(`${tabId}-tab`).classList.add('active');
+        });
+    });
+    
+    // Play button functionality
+    const playButtons = document.querySelectorAll('.play-button, .btn-action');
+    const videoModal = document.getElementById('videoModal');
+    const modalClose = document.querySelector('.modal-close');
+    
+    playButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            videoModal.style.display = 'block';
+        });
+    });
+    
+    modalClose.addEventListener('click', function() {
+        videoModal.style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target === videoModal) {
+            videoModal.style.display = 'none';
+        }
+    });
+    
+    // Interactive animation button
+    const interactiveBtn = document.querySelector('.btn-interactive');
+    if (interactiveBtn) {
+        interactiveBtn.addEventListener('click', function() {
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memuat...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-check"></i> Animasi Berjalan';
+                this.classList.add('active');
+            }, 2000);
+        });
+    }
+});
+</script>
+{% endblock %}
